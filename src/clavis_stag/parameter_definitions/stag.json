@@ -1,0 +1,330 @@
+{
+  "generalParameters": [
+    {
+      "name": "testpulse_mask",
+      "type": "integer",
+      "defaultValue": 0,
+      "options": [],
+      "minimum": 0,
+      "maximum": 15,
+      "description": "FPGA 10 kHz test-pulse generator ASIC mask; write-only, bits 0..3 select ASICs"
+    }
+  ],
+  "groupParameters": [
+    {
+      "name": "testpulse_enabled",
+      "type": "boolean",
+      "defaultValue": false,
+      "options": [],
+      "description": "FPGA test-pulse enable for ASIC 0..3; initialize global testpulse_mask first"
+    },
+    {
+      "name": "analog_output",
+      "type": "boolean",
+      "defaultValue": false,
+      "description": "Analog Output",
+      "options": []
+    },
+    {
+      "name": "polarity",
+      "type": "string",
+      "defaultValue": "normal",
+      "options": [
+        "normal",
+        "inverted"
+      ],
+      "description": "ToT Polarity"
+    },
+    {
+      "name": "testpulse",
+      "type": "boolean",
+      "defaultValue": false,
+      "description": "Inject Test Pulse",
+      "options": []
+    },
+    {
+      "name": "threshold",
+      "type": "number",
+      "defaultValue": 1.8,
+      "description": "Comp. Threshold; UI step 0.0035 V",
+      "options": [],
+      "minimum": -1.8,
+      "maximum": 1.8
+    },
+    {
+      "name": "csa_res",
+      "type": "number",
+      "defaultValue": 32,
+      "options": [
+        32,
+        64,
+        96,
+        128,
+        160,
+        192,
+        224,
+        256
+      ],
+      "description": "CSA Resistance (kΩ)"
+    },
+    {
+      "name": "pzc_res",
+      "type": "number",
+      "defaultValue": 32,
+      "options": [
+        32,
+        64,
+        96,
+        128,
+        160,
+        192,
+        224,
+        256
+      ],
+      "description": "PZC Resistance (kΩ)"
+    },
+    {
+      "name": "shp_res",
+      "type": "number",
+      "defaultValue": 7.5,
+      "options": [
+        7.5,
+        15,
+        22.5,
+        30,
+        37.5,
+        45,
+        52.5,
+        60
+      ],
+      "description": "SHP Resistance (kΩ)"
+    },
+    {
+      "name": "csa_cap",
+      "type": "number",
+      "defaultValue": 250,
+      "options": [
+        250,
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000
+      ],
+      "description": "CSA Capacitance (fF)"
+    },
+    {
+      "name": "pzc_cap",
+      "type": "number",
+      "defaultValue": 250,
+      "options": [
+        250,
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000
+      ],
+      "description": "PZC Capacitance (fF)"
+    },
+    {
+      "name": "shp_cap",
+      "type": "number",
+      "defaultValue": 250,
+      "options": [
+        250,
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000
+      ],
+      "description": "SHP Capacitance (fF)"
+    }
+  ],
+  "channelParameters": [
+    {
+      "name": "analog_output",
+      "type": "boolean",
+      "defaultValue": false,
+      "description": "Analog Output",
+      "options": []
+    },
+    {
+      "name": "polarity",
+      "type": "string",
+      "defaultValue": "normal",
+      "options": [
+        "normal",
+        "inverted"
+      ],
+      "description": "ToT Polarity"
+    },
+    {
+      "name": "testpulse",
+      "type": "boolean",
+      "defaultValue": false,
+      "description": "Inject Test Pulse",
+      "options": []
+    },
+    {
+      "name": "threshold",
+      "type": "number",
+      "defaultValue": 1.8,
+      "description": "Comp. Threshold; UI step 0.0035 V",
+      "options": [],
+      "minimum": -1.8,
+      "maximum": 1.8
+    },
+    {
+      "name": "csa_res",
+      "type": "number",
+      "defaultValue": 32,
+      "options": [
+        32,
+        64,
+        96,
+        128,
+        160,
+        192,
+        224,
+        256
+      ],
+      "description": "CSA Resistance (kΩ)"
+    },
+    {
+      "name": "pzc_res",
+      "type": "number",
+      "defaultValue": 32,
+      "options": [
+        32,
+        64,
+        96,
+        128,
+        160,
+        192,
+        224,
+        256
+      ],
+      "description": "PZC Resistance (kΩ)"
+    },
+    {
+      "name": "shp_res",
+      "type": "number",
+      "defaultValue": 7.5,
+      "options": [
+        7.5,
+        15,
+        22.5,
+        30,
+        37.5,
+        45,
+        52.5,
+        60
+      ],
+      "description": "SHP Resistance (kΩ)"
+    },
+    {
+      "name": "csa_cap",
+      "type": "number",
+      "defaultValue": 250,
+      "options": [
+        250,
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000
+      ],
+      "description": "CSA Capacitance (fF)"
+    },
+    {
+      "name": "pzc_cap",
+      "type": "number",
+      "defaultValue": 250,
+      "options": [
+        250,
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000
+      ],
+      "description": "PZC Capacitance (fF)"
+    },
+    {
+      "name": "shp_cap",
+      "type": "number",
+      "defaultValue": 250,
+      "options": [
+        250,
+        500,
+        750,
+        1000,
+        1250,
+        1500,
+        1750,
+        2000,
+        2250,
+        2500,
+        2750,
+        3000,
+        3250,
+        3500,
+        3750,
+        4000
+      ],
+      "description": "SHP Capacitance (fF)"
+    }
+  ]
+}

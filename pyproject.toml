@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clavis-stag"
+version = "0.1.0"
+description = "STAG RBCP slow control and AGASA v3 programming for Clavis"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["clavis>=0.1,<0.2", "pydantic>=2,<3"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+clavis-stag = "clavis_stag.cli:main"
+
+[project.entry-points."clavis.boards"]
+stag = "clavis_stag.plugin:plugin"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+clavis_stag = ["parameter_definitions/*.json"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

@@ -32,12 +32,23 @@ Example `POST /api/boards` body:
 }
 ```
 
-After installing the plugin, restart `clavisd`. Existing Clavis commands work:
+After installing the plugin, start or restart `clavisd` in the same environment:
 
 ```bash
+clavisd --uds /tmp/clavisd.sock
+```
+
+In a second terminal with that environment activated, use Clavis commands:
+
+```bash
+export CLAVIS_UDS=/tmp/clavisd.sock
 clavis boards types
 clavis boards create board_type=stag board_id=stag-001 name=STAG host=192.168.10.16
 clavis boards connect stag-001
+for chip in 0 1 2 3; do
+  clavis boards set-group stag-001 "$chip" threshold=1.8
+done
+clavis boards set-global stag-001 testpulse_mask=0
 clavis boards set-channel stag-001 1 threshold=0.5 testpulse=true
 clavis boards set-group stag-001 1 threshold=0.3
 clavis boards set-global stag-001 testpulse_mask=1
@@ -51,14 +62,15 @@ callers may use `board.set_channels({"1": {...}, "2": {...}})` to merge several
 edits and program each affected ASIC once. Other ASICs are untouched. No
 Clavis-core changes or bulk HTTP endpoint are required.
 
-The standalone `clavis-stag` command (also `python -m clavis_stag`) opens a
-direct connection without a daemon. Its `set-channel` and `apply` commands
-program all four chips using defaults for unspecified channels and settings.
-`apply` takes a JSON file mapping channel IDs to option objects. Use one file
-for all desired edits, since each invocation starts from defaults. Add
-`--dry-run` to preview all four ASIC payloads offline. `--testpulse-mask` is
-optional and leaves FPGA pulse generators unchanged when omitted; use `0` to
-explicitly disable them. See the README for commands and installation.
+Control is provided by the shared Clavis CLI, REST API, or Python imports. The
+plugin has no standalone CLI or module entry point. The initialization loop
+above programs defaults on all four ASICs in a freshly created board instance;
+later group/channel edits preserve remembered settings and leave other ASICs
+untouched. To restore all settings to defaults after editing, delete and
+recreate the board instance and repeat initialization, or explicitly set every
+channel parameter. A threshold-only edit on an existing instance preserves its
+other parameters. Board registrations and channel state live in daemon memory
+and need restoring after a daemon restart.
 
 | Channel parameter | Default | Allowed values / units |
 | --- | --- | --- |
